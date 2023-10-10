@@ -31,8 +31,8 @@ if [ -n "$SMTP_HOST" ]; then
   echo "account default : mailgun" >> /etc/msmtprc
 fi
 
-if [ -f "/var/scripts/pre-startup.php" ]; then
-  /var/scripts/pre-startup.php
+if [ -f "/var/scripts/pre-startup.sh" ]; then
+  /var/scripts/pre-startup.sh
 fi
 
 echo "export environment='${environment}'" >> /etc/apache2/envvars
