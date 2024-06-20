@@ -1,16 +1,18 @@
 #!/bin/bash
 set -e
 
-# Setup XDebug if remote IP is set.
-# A remote IP can be obtained by creating a new loopback interface:
-# sudo ifconfig lo0 alias 10.254.254.254
-if [ -n "$XDEBUG_REMOTE_IP" ]; then
+# Enable XDebug if needed.
+if [ -n "$XDEBUG_ENABLE" ]; then
   phpenmod xdebug
-  echo "Setting up XDebug on $XDEBUG_REMOTE_IP"
-  echo "xdebug.remote_enable=1" >> /etc/php/7.1/apache2/conf.d/20-xdebug.ini
-  echo "xdebug.remote_host=\"$XDEBUG_REMOTE_IP\"" >> /etc/php/7.1/apache2/conf.d/20-xdebug.ini
-  echo "xdebug.remote_port=9000" >> /etc/php/7.1/apache2/conf.d/20-xdebug.ini
-  echo "xdebug.idekey=phpstorm_xdebug" >> /etc/php/7.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.profiler_enable=1" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.remote_handler=dbgp" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.remote_mode=req" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.client_host=host.docker.internal" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.client_port=9003" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.mode=debug" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.remote_autostart=1" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.remote_connect_back=0" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+  echo "xdebug.idekey=PHPSTORM" >> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
 fi
 
 # Setup mail.

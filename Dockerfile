@@ -59,7 +59,7 @@ RUN echo Europe/Paris | tee /etc/timezone \
   && mkdir -p /var/www/private \
   && chmod -Rf 777 /var/www/private
 
-COPY config/php.ini /etc/php//apache2/php.ini
+COPY config/php.ini /etc/php/8.1/apache2/php.ini
 COPY config/apache2.conf /etc/apache2/apache2.conf
 COPY config/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf
 COPY config/scripts /var/scripts
