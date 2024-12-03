@@ -21,7 +21,7 @@ for x in `ls /var/www/web/sites`; do
     drush -l $x -y cim
     drush -l $x cr
     if [ -f "../translations/nl.po" ]; then
-      drush language-import ../translations/nl.po
+      drush locale:import nl ../translations/nl.po | cat
     fi
   fi
 done
