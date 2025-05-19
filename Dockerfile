@@ -26,7 +26,7 @@ RUN echo Europe/Paris | tee /etc/timezone \
     php8.3-gd php8.3-curl php8.3-ldap php8.3-mysql php8.3-odbc php8.3-soap php8.3-xsl \
     php8.3-zip php8.3-intl php8.3-bcmath php8.3-cli php8.3-xdebug \
     imagemagick php8.3-imagick \
-    rsync \
+    rsync nodejs \
     build-essential python3 g++ python-is-python3 \
     unzip git-core ssh mysql-client nano vim less \
     msmtp msmtp-mta telnet sudo \
