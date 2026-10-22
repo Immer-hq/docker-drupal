@@ -13,26 +13,25 @@ ENV LANG=C.UTF-8 \
 
 RUN echo Europe/Paris | tee /etc/timezone \
   && apt-get update \
-  && apt-get upgrade -y \
-  && apt-get install -y ca-certificates curl \
-    lsb-release gnupg2 ca-certificates \
-    apt-transport-https software-properties-common \
-  && add-apt-repository -y ppa:ondrej/php \
+  && apt-get -y install lsb-release ca-certificates curl \
+  && curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb \
+  && dpkg -i /tmp/debsuryorg-archive-keyring.deb \
+  && sh -c 'echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
   && apt-get update \
   && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get install -y --no-install-recommends \
-    apache2 php8.3 libapache2-mod-php8.3 php8.3-memcached \
-    php8.3-mbstring php8.3-xml php8.3-mysql php8.3-opcache \
-    php8.3-gd php8.3-curl php8.3-ldap php8.3-mysql php8.3-odbc php8.3-soap php8.3-xsl \
-    php8.3-zip php8.3-intl php8.3-bcmath php8.3-cli php8.3-xdebug \
-    imagemagick php8.3-imagick \
+    apache2 php8.5 libapache2-mod-php8.5 php8.5-memcached \
+    php8.5-mbstring php8.5-xml php8.5-mysql \
+    php8.5-gd php8.5-curl php8.5-ldap php8.5-mysql php8.5-odbc php8.5-soap php8.5-xsl \
+    php8.5-zip php8.5-intl php8.5-bcmath php8.5-cli php8.5-xdebug \
+    imagemagick php8.5-imagick \
     rsync nodejs \
     build-essential python3 g++ python-is-python3 \
     unzip git-core ssh mysql-client nano vim less \
     msmtp msmtp-mta telnet sudo \
-  && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash \
+  && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh | bash \
   && . "$HOME/.nvm/nvm.sh" \
-  && nvm install 22 \
+  && nvm install 24 \
   && rm -Rf /var/cache/apt/* \
   && a2enmod rewrite expires \
   && a2enmod headers \
