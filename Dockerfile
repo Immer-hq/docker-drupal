@@ -19,14 +19,13 @@ RUN echo Europe/Paris | tee /etc/timezone \
     apt-transport-https software-properties-common \
   && add-apt-repository -y ppa:ondrej/php \
   && apt-get update \
-  && curl -sL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get install -y --no-install-recommends \
-    apache2 php8.2 libapache2-mod-php8.2 php8.2-memcached \
-    php8.2-mbstring php8.2-xml php8.2-mysql php8.2-opcache \
-    php8.2-gd php8.2-curl php8.2-ldap php8.2-mysql php8.2-odbc php8.2-soap php8.2-xsl \
-    php8.2-zip php8.2-intl php8.2-bcmath php8.2-cli php8.2-xdebug \
-    imagemagick php8.2-imagick \
-    rsync nodejs \
+    apache2 php7.1 libapache2-mod-php7.1 php7.1-memcached \
+    php7.1-mbstring php7.1-xml php7.1-mysql php7.1-opcache \
+    php7.1-gd php7.1-curl php7.1-ldap php7.1-mysql php7.1-odbc php7.1-soap php7.1-xsl \
+    php7.1-zip php7.1-intl php7.1-bcmath php7.1-cli php7.1-xdebug \
+    imagemagick php7.1-imagick \
+    rsync \
     build-essential python3 g++ python-is-python3 \
     unzip git-core ssh mysql-client nano vim less \
     msmtp msmtp-mta telnet sudo \
